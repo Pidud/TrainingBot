@@ -6,20 +6,23 @@
 /*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
-
+import frc.robot.subsystems.Drivetrain;
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
 import frc.robot.OI;
 /**
  * An example command.  You can replace me with your own command.
  */
 public abstract class CommandBase extends Command {
+  public static OI oi;
+  public static final Drivetrain drivetrain = new Drivetrain();
+
   public CommandBase() {
   
   }
 
   // Called just before this Command runs the first time
-  public void init() {
-    OI oi = new OI();
+  public static void init() {
+     OI oi = new OI();
+     
   }
 }
