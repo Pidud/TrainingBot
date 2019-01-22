@@ -35,17 +35,17 @@ public class SparkWrapper implements SpeedController {
 
     @Override
     public void setInverted(boolean isInverted) {
-
+        motorController.setInverted(isInverted);
     }
 
     @Override
     public boolean getInverted() {
-        return false;
+        return motorController.getInverted();
     }
 
     @Override
     public void disable() {
-
+        
     }
 
     @Override

@@ -5,14 +5,11 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot;
+package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-public class OperateMecanumDrive extends Command {
+public class OperateMecanumDrive extends CommandBase {
   public OperateMecanumDrive() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    requires(drivetrain);
   }
 
   // Called just before this Command runs the first time
@@ -23,6 +20,7 @@ public class OperateMecanumDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    drivetrain.setMecanumDrive(oi.getLeftStickY(), oi.getLeftStickX(), oi.getRightStickZ(), navsensor.getGyroAngle());
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -34,11 +32,14 @@ public class OperateMecanumDrive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    drivetrain.setMecanumDrive(0, 0, 0, 0);
+    navsensor.resetAngle();
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    drivetrain.setMecanumDrive(0, 0, 0, 0);
   }
 }

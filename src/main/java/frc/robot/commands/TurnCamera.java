@@ -7,10 +7,9 @@
 
 package frc.robot.commands;
 
-public class OperateTankDrive extends CommandBase {
-
-  public OperateTankDrive() {
-    requires(drivetrain);
+public class TurnCamera extends CommandBase {
+  public void TurnCamera() {
+    requires(rotater);
   }
 
   // Called just before this Command runs the first time
@@ -21,7 +20,7 @@ public class OperateTankDrive extends CommandBase {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    drivetrain.setTankDrive(oi.getRightStickY(), oi.getLeftStickY());
+    rotater.turnCamera();
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -33,7 +32,6 @@ public class OperateTankDrive extends CommandBase {
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    drivetrain.setTankDrive(0, 0);
   }
 
   // Called when another command which requires one or more of the same

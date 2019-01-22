@@ -9,11 +9,11 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import frc.robot.subsystems.Drivetrain;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import frc.robot.RobotMap;
-import frc.robot.commands.OperateTankDrive;
+import frc.robot.commands.OperateMecanumDrive;
 
 /**
  * An example subsystem. You can replace me with your own Subsystem.
@@ -27,6 +27,7 @@ public class Drivetrain extends Subsystem {
   private CANSparkMax backLeft; 
   private MecanumDrive mecanumDrive;
   
+  
   public void init(){
     frontRight = new CANSparkMax(RobotMap.frontRightMotor, MotorType.kBrushless);
     backRight = new CANSparkMax(RobotMap.backRightMotor, MotorType.kBrushless);
@@ -34,7 +35,6 @@ public class Drivetrain extends Subsystem {
     backLeft = new CANSparkMax(RobotMap.backLeftMotor, MotorType.kBrushless);
 
     mecanumDrive = new MecanumDrive(frontLeft, backLeft, frontRight, backRight);
-
 
 
   }
@@ -60,6 +60,6 @@ public class Drivetrain extends Subsystem {
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    setDefaultCommand(new OperateTankDrive());
+    setDefaultCommand(new OperateMecanumDrive());
   }
 }

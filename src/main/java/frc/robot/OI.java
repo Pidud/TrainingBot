@@ -8,6 +8,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.TurnCamera;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -16,9 +18,11 @@ import edu.wpi.first.wpilibj.Joystick;
 public class OI {
   public final Joystick rightStick = new Joystick(1);
   public final Joystick leftStick = new Joystick(2);
+  public final Joystick controller1 = new Joystick(0);
+  public final JoystickButton aButton = new JoystickButton(controller1, 2);
 
-public OI(){
-
+  public OI(){
+  aButton.whenPressed(new TurnCamera());
 }
 
 public double getRightStickY(){
@@ -28,7 +32,22 @@ public double getRightStickY(){
 public double getLeftStickY(){
   return leftStick.getY();
 }
-  //// CREATING BUTTONS
+
+public double getRightStickX(){
+  return rightStick.getX();
+}
+
+public double getLeftStickX(){
+  return leftStick.getX();
+}
+
+public double getRightStickZ(){
+  return rightStick.getZ();
+}
+
+public double getLeftStickZ(){
+  return leftStick.getZ();
+}
   // One type of button is a joystick button which is any button on a
   //// joystick.
   // You create one by telling it which joystick it's on and which button

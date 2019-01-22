@@ -24,7 +24,7 @@ import frc.robot.commands.CommandBase;
  */
 public class Robot extends TimedRobot {
   public static OI m_oi;
-
+  PowerDistributionPanel _pdp;
   Command m_autonomousCommand;
   SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -34,7 +34,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-  PowerDistributionPanel _pdp = new PowerDistributionPanel();
+  _pdp = new PowerDistributionPanel();
   _pdp.clearStickyFaults();
   CommandBase.init();
 
